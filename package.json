@@ -7,6 +7,9 @@
     "postinstall": "bower install && gulp deploy",
     "start": "node index"
   },
+  "engines": {
+    "node": "8.1.4"
+  },
   "author": "Alex Chin <alex@alexchin.co.uk>",
   "license": "ISC",
   "gulp": {
