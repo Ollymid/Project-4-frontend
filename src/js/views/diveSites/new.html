@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<div class="column is-8 is-offset-2">
+  <div class="field">
+    <h1 class="title">Share your dive site with us!</h1>
+    <form name="diveSitesNew.newForm" ng-submit="diveSitesNew.create()">
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" name="name" id="name" ng-model="diveSitesNew.site.name" placeholder="Dive Site Name" required maxlength="30">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-id-card-o"></i>
+          </span>
+          <div ng-messages="diveSitesNew.newForm.name.$error" role="alert" ng-show="(diveSitesNew.newForm.$submitted || diveSitesNew.newForm.name.$touched) && diveSitesNew.newForm.name.$invalid" class="error">
+            <div ng-message="required">Dive site name is required.</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <span class="select is full-width">
+            <select name="waterType" id="waterType" ng-model="diveSitesNew.site.water_type" required>
+              <option disabled>Water Type</option>
+              <option>Fresh Water </option>
+              <option>Salt Water</option>
+            </select>
+          </span>
+          <span class="icon is-medium is-left">
+            <i class="fa fa-tint" aria-hidden="true"></i>
+          </span>
+          <div ng-messages="trailsNew.newForm.difficulty.$error" role="alert" ng-show="(diveSitesNew.newForm.$submitted || diveSitesNew.newForm.name.$touched) && diveSitesNew.newForm.name.$invalid" class="error">
+            <div ng-message="required">Trail difficulty is required.</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" name="description" id="description" ng-model="trailsNew.trail.description" placeholder="Trail descriptions and directions" required maxlength="1000">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-arrows"></i>
+          </span>
+          <div ng-messages="trailsNew.newForm.description.$error" role="alert" ng-show="(trailsNew.newForm.$submitted || trailsNew.newForm.description.$touched) && trailsNew.newForm.description.$invalid" class="error">
+            <div ng-message="required">Trail description is required.</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <span class="select is full-width">
+            <select name="difficulty" id="difficulty" ng-model="trailsNew.trail.difficulty" required>
+              <option disabled>Trail Difficulty</option>
+              <option>1 </option>
+              <option>2 </option>
+              <option>3 </option>
+              <option>4 </option>
+              <option>5 </option>
+            </select>
+          </span>
+          <span class="icon is-medium is-left">
+            <i class="fa fa-warning"></i>
+          </span>
+          <div ng-messages="trailsNew.newForm.difficulty.$error" role="alert" ng-show="(trailsNew.newForm.$submitted || trailsNew.newForm.difficulty.$touched) && trailsNew.newForm.difficulty.$invalid" class="error">
+            <div ng-message="required">Trail difficulty is required.</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <h2>Click on the map to draw your route.  Put a new marker every time you change direction. A Trail must have at least three markers</h2>
+        </p>
+      </div>
+
+      <google-map-create center="{ lat: 51.526583, lng: -0.085656}" path="trailsNew.trail.route" ></google-map-create>
+
+      <div class="field newBottom">
+        <p class="control">
+          <button class="button is-success is-fullwidth">Create</button>
+        </p>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 angular
-.module('authApp')
+.module('scubaApp')
 .factory('Log', Log);
 
 Log.$inject = ['$resource', 'API_URL'];

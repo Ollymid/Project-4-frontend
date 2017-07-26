@@ -11,6 +11,26 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       templateUrl: '/js/views/statics/home.html'
     })
+    .state('diveSitesIndex', {
+      url: '/diveSites',
+      templateUrl: 'js/views/diveSites/index.html',
+      controller: 'DiveSitesIndexCtrl as diveSitesIndex'
+    })
+    .state('diveSitesNew', {
+      url: '/diveSites/new',
+      templateUrl: 'js/views/diveSites/new.html',
+      controller: 'DiveSitesNewCtrl as diveSitesNew'
+    })
+    .state('diveSitesShow', {
+      url: '/diveSites/:id',
+      templateUrl: 'js/views/diveSites/show.html',
+      controller: 'DiveSitesShowCtrl as diveSitesShow'
+    })
+    .state('diveSitesEdit', {
+      url: '/diveSites/:id/edit',
+      templateUrl: 'js/views/diveSites/edit.html',
+      controller: 'DiveSitesEditCtrl as diveSitesEdit'
+    })
     .state('login', {
       url: '/login',
       templateUrl: '/js/views/auth/login.html',

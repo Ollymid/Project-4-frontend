@@ -23,7 +23,7 @@ function LoginCtrl($auth, $state) {
 
   function submit() {
     $auth.login(vm.credentials)
-      .then(() => $state.go('dive_sitesIndex'));
+      .then(() => $state.go('diveSitesIndex'));
   }
 
   vm.submit = submit;
@@ -31,7 +31,7 @@ function LoginCtrl($auth, $state) {
 
   function authenticate(provider) {
     $auth.authenticate(provider)
-    .then(() => $state.go('dive_sitesIndex'));
+    .then(() => $state.go('diveSitesIndex'));
   }
   vm.authenticate = authenticate;
 }

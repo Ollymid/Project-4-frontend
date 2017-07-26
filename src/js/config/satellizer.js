@@ -1,6 +1,6 @@
 angular
-  .module('scubaApp')
-  .config(Auth);
+.module('scubaApp')
+.config(Auth);
 
 Auth.$inject = ['$authProvider', 'API_URL'];
 function Auth($authProvider, API_URL) {

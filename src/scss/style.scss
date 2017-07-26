@@ -1,1 +1,28 @@
-// Import all of your scss files here
+
+// variables
+$color1: #76b6c4;
+$color2: #1da2d8;
+$color3: #064273;
+$color4: #7fcdff;
+$color5: #def3f6;
+$color6: #363942;
+$color7: #FAFBF9;
+
+
+
+.home {
+  height: 100vh;
+  background-image: url('../images/sea.jpg');
+  background-size: 100%;
+  background-position: 40% 50%;
+
+  background-repeat: no-repeat;
+  footer {
+    display: none;
+  }
+}
+
+.navbar-logo {
+  height: 40px;
+  width: 40px;
+}

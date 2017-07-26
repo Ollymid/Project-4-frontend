@@ -3,15 +3,46 @@
   <head>
     <base href="/">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bubbles</title>
+    <script src="https://use.fontawesome.com/3818a32d0a.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKBfbXmibiy_CzLqXuWzS0xcZ_ZVZyIjM&libraries=places"></script>
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
     <!-- endinject -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
+    <link rel="icon" type="image/png" href="../images/scuba.png" sizes="32x32" />
   </head>
-  <body ng-controller="MainCtrl as main">
-  <main ui-view >
+  <body ng-controller="MainCtrl as main" ng-class="main.pageName">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" ui-sref="home">
+          <img class="navbar-logo" src="../images/anchor.png" alt="Anchor Logo">
+        </a>
+      </div>
+      <span class="nav-toggle" ng-click="menuIsOpen = !menuIsOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <div class="nav-right nav-menu" ng-class="{ 'is-active': menuIsOpen }">
+        <a class="nav-item" ui-sref="diveSitesIndex" ui-sref-active="active" ng-if="main.isAuthenticated()">Dive Sites Near You</a>
+        <a class="nav-item" ui-sref="logsNew" ui-sref-active="active" ng-if="main.isAuthenticated()">Create a New Log</a>
+        <a class="nav-item" ui-sref="login" ui-sref-active="active" ng-if="!main.isAuthenticated()">Login</a>
+        <a class="nav-item" ui-sref="register" ui-sref-active="active" ng-if="!main.isAuthenticated()">Register</a>
+        <a class="nav-item" ui-sref="profile({ id: main.currentUserId })" ui-sref-active="active" ng-if="main.isAuthenticated()">Profile</a>
+        <a class="nav-item" ng-click="main.logout()" ui-sref-active="active" ng-if="main.isAuthenticated()">Logout</a>
+      </div>
+    </nav>
 
-  </main>
+<div class="container">
+  <div class="message" ng-if="main.message">
+    <p>{{ main.message }}</p>
+  </div>
+  <main ui-view></main>
+</div>
+
+  <footer></footer>
   </body>
 </html>
