@@ -20,6 +20,9 @@ function MainCtrl($auth, $state, $rootScope, $transitions) {
     vm.pageName = transition.$to().name;
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
+
+    if($auth.getPayload()) vm.currentUser = $auth.getPayload();
+    vm.pageName = transition.$to().name;
   });
 
   function logout() {

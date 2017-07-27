@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<div class="column is-8 is-offset-2">
+  <div class="field">
+    <h2 class="title">Log your dive! </h2>
+    <form name="logsNew.newForm" ng-submit="logsNew.create()">
+      {{ logsNew.log}}
+
+      <div class="field">
+        <label for="date">Date of dive:</label>
+        <p class="control has-icons-left">
+          <input class="input" type="date" name="date" id="date" ng-model="logsNew.log.date" required>
+          <span class="icon is-medium is-left">
+            <i class="fa fa-id-card-o"></i>
+          </span>
+          <div ng-messages="logsNew.newForm.date.$error" role="alert" ng-show="(logsNew.newForm.$submitted || logsNew.newForm.date.$touched) && logsNew.newForm.date.$invalid" class="help is-danger">
+            <div ng-message="required">A date is needed for this log</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="date">What dive site did you dive?</label>
+        <p class="control has-icons-left">
+          <span class="select is-fullwidth">
+            <select name="diveSite" id="diveSite" ng-model="logsNew.log.dive_site_id" value="diveSite.name" required>
+              <option ng-repeat="diveSite in logsNew.diveSites" value="{{diveSite.id}}"> {{diveSite.name}} </option>
+            </select>
+          </span>
+          <span class="icon is-medium is-left">
+            <i class="fa fa-flag" aria-hidden="true"></i>
+          </span>
+          <div ng-messages="logsNew.newForm.diveSite.$error" role="alert" ng-show="(logsNew.newForm.$submitted || logsNew.newForm.diveSite.$touched) && logsNew.newForm.diveSite.$invalid" class="help is-danger">
+            <div ng-message="required">Dive Site name is required, if site not listed please add it to our list</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="date">How long was your dive in minutes?</label>
+        <p class="control has-icons-left">
+          <input class="input" type="number" name="diveTime" id="diveTime" ng-model="logsNew.log.dive_time" min="0" max="360" placeholder="0" required > <span class="icon is-medium is-left">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+          </span>
+          <div ng-messages="logsNew.newForm.diveTime.$error" role="alert" ng-show="(logsNew.newForm.$submitted || logsNew.newForm.diveTime.$touched) && logsNew.newForm.diveTime.$invalid" class="help is-danger">
+            <div ng-message="required">Please record your dive time </div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="date">What dive gear did you use?</label>
+        <p class="control has-icons-left">
+          <input class="input" type="text" name="gear" id="gear" ng-model="logsNew.log.gear" placeholder="Please seperate each piece of equipment with a comma" maxlength="150" required>
+          <span class="icon is-medium is-left">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+          </span>
+          <div ng-messages="logsNew.newForm.gear.$error" role="alert" ng-show="(logsNew.newForm.$submitted || logsNew.newForm.gear.$touched) && logsNew.newForm.gear.$invalid" class="help is-danger">
+            <div ng-message="required">Please tell us what equipment you used</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="date">Comments (What did you see? Who were you with? What did you do? etc.)</label>
+        <p class="control ">
+          <textarea class="input" rows="4" name="comments" id="comments" ng-model="logsNew.log.comments" placeholder="Tell us about your dive" minlength="2" maxlength="250" required>
+          <span></span>
+        </textarea>
+          <div ng-messages="logsNew.newForm.comments.$error" role="alert" ng-show="(logsNew.newForm.$submitted || logsNew.newForm.comments.$touched) && logsNew.newForm.comments.$invalid" class="help is-danger">
+            <div ng-message="required">Please tell us about your dive. Even if it's just to say you're still alive!</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="date">What was the visibility like? (Metres)</label>
+        <p class="control has-icons-left">
+          <input class="input" type="text" name="visibility" id="visibility" ng-model="logsNew.log.visibility" placeholder="Please enter this as a numerical value" required >
+          <span class="icon is-medium is-left">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </span>
+          <div ng-messages="logsNew.newForm.visibility.$error" role="alert" ng-show="(logsNew.newForm.$submitted || logsNew.newForm.visibility.$touched) && logsNew.newForm.visibility.$invalid" class="help is-danger">
+            <div ng-message="required">Please tell us what equipment you used</div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="date">What was the water temperature like? (°C)</label>
+        <p class="control has-icons-left">
+          <input class="input" type="number" step="0.1" name="temperature" id="temperature" ng-model="logsNew.log.temperature" placeholder="Please enter this as a numerical value">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i>
+          </span>
+          <div ng-messages="logsNew.newForm.temperature.$error" role="alert" ng-show="(logsNew.newForm.$submitted || logsNew.newForm.temperature.$touched) && logsNew.newForm.temperature.$invalid" class="error">
+            <div ng-message="required">Water temperature is required </div>
+          </div>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" base64 type="file" name="base64" id="image" ng-model="logsNew.log.base64" placeholder="Image">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-picture-o"></i>
+          </span>
+          <div ng-messages="diveSitesNew.newForm.base64.$error" role="alert" ng-show="(logsNew.newForm.$submitted || logsNew.newForm.base64.$touched) && logsNew.newForm.base64.$invalid" class="error">
+            <div ng-message="required">Image is required.</div>
+          </div>
+        </p>
+        <img ng-src="{{ logsNew.log.base64 }}">
+      </div>
+
+      <div class="field newBottom">
+        <p class="control">
+          <button class="button is-info is-fullwidth">Create</button>
+        </p>
+      </div>
+
+    </form>
+  </div>
+</div>

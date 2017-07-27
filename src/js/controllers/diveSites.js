@@ -1,7 +1,9 @@
 angular
 .module('scubaApp')
-.controller('DiveSitesIndexCtrl', DiveSitesIndexCtrl);
-
+.controller('DiveSitesIndexCtrl', DiveSitesIndexCtrl)
+.controller('DiveSitesNewCtrl', DiveSitesNewCtrl)
+.controller('DiveSitesShowCtrl', DiveSitesShowCtrl)
+.controller('DiveSitesEditCtrl', DiveSitesEditCtrl);
 
 DiveSitesIndexCtrl.$inject = ['DiveSite'];
 function DiveSitesIndexCtrl(DiveSite) {
@@ -11,11 +13,10 @@ function DiveSitesIndexCtrl(DiveSite) {
 
 }
 
-DiveSitesNewCtrl.$inject = ['DiveSite', 'User', '$state'];
-function DiveSitesNewCtrl(DiveSite, User, $state) {
+DiveSitesNewCtrl.$inject = ['DiveSite', '$state'];
+function DiveSitesNewCtrl(DiveSite, $state) {
   const vm = this;
   vm.site = {};
-  vm.users = User.query();
 
   function diveSiteCreate() {
     DiveSite
@@ -44,4 +45,28 @@ function DiveSitesShowCtrl(DiveSite, User, $stateParams, $state, $auth) {
 
   vm.delete = diveSiteDelete;
 
+}
+
+DiveSitesEditCtrl.$inject = ['$state', 'DiveSite', '$stateParams'];
+
+function DiveSitesEditCtrl($state, DiveSite, $stateParams) {
+  const vm = this;
+
+  DiveSite
+  .get($stateParams)
+  .$promise
+  .then((site) => {
+    vm.site = site;
+  });
+
+  function siteUpdate() {
+    console.log(vm.site.id, vm.site);
+    DiveSite
+    .update({ id: vm.site.id }, vm.site)
+    .$promise
+    .then(() => {
+      $state.go('diveSitesShow', $state.params);
+    });
+  }
+  vm.update = siteUpdate;
 }

@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 
 <div class="column is-10 is-offset-1 ">
+
+  <google-map-index center="{ lat: 51.533309, lng: -0.105317 }" sites="diveSitesIndex.all">
+    MAP GOES HERE
+  </google-map-index>
+
   <div ng-repeat="diveSite in diveSitesIndex.all">
     <div class="card has-shadow">
-      <h2 class="title"><a ui-sref="diveSiteShow({ id: diveSite.id })">{{ diveSite.name }}</a></h2>
+      <h2 class="title"><a ui-sref="diveSitesShow({ id: diveSite.id })">{{ diveSite.name }}</a></h2>
 
       <div class="content">
 

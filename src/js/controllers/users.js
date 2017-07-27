@@ -1,33 +1,28 @@
 angular
-  .module('scubaApp')
-  .controller('ProfileShowCtrl', ProfileShowCtrl);
+.module('scubaApp')
+.controller('UsersShowCtrl', UsersShowCtrl);
 
-ProfileShowCtrl.$inject = ['$auth', 'User', '$state', 'DiveSite', 'Log'];
 
-function ProfileShowCtrl($auth, User, $state, DiveSite, Log) {
+
+UsersShowCtrl.$inject = ['$auth', 'User', '$state', '$stateParams'];
+
+function UsersShowCtrl($auth, User, $state, $stateParams) {
   const vm = this;
-  vm.user = User.get($state.params);
-
-  vm.logs = Log.query({
-    createdBy: $state.params.id
+  if ($auth.getPayload()) vm.currentUser = User.get({
+    id: $auth.getPayload().id
   });
 
-  vm.logout = logout;
+  vm.user = User.get($stateParams);
 
-  function logout() {
-    $auth.logout();
-    $state.go('login');
-  }
-
-  function profilesDelete() {
+  function profileDelete() {
     User
-      .remove(vm.user)
-      .$promise
-      .then(() => {
-        $auth.logout();
-        $state.go('login');
-      });
+    .remove(vm.user)
+    .$promise
+    .then(() => {
+      $auth.logout();
+      $state.go('login');
+    });
   }
 
-  vm.delete = profilesDelete;
+  vm.delete = profileDelete;
 }

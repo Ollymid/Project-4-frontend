@@ -31,7 +31,8 @@
         <a class="nav-item" ui-sref="logsNew" ui-sref-active="active" ng-if="main.isAuthenticated()">Create a New Log</a>
         <a class="nav-item" ui-sref="login" ui-sref-active="active" ng-if="!main.isAuthenticated()">Login</a>
         <a class="nav-item" ui-sref="register" ui-sref-active="active" ng-if="!main.isAuthenticated()">Register</a>
-        <a class="nav-item" ui-sref="profile({ id: main.currentUserId })" ui-sref-active="active" ng-if="main.isAuthenticated()">Profile</a>
+        <a class="nav-item" ui-sref="usersShow({id: main.currentUser.id})" ui-sref-active="active" ng-if="main.isAuthenticated()">Profile</a>
+
         <a class="nav-item" ng-click="main.logout()" ui-sref-active="active" ng-if="main.isAuthenticated()">Logout</a>
       </div>
     </nav>
@@ -43,6 +44,23 @@
   <main ui-view></main>
 </div>
 
-  <footer></footer>
+  <footer ng-class="main.pageName">
+    <div class="container">
+      <div class="content has-text-centered" >
+
+        <p>
+          <strong>Olly Middleton</strong>
+        </p>
+        <p>
+          <a class="icon" href="https://github.com/Ollymid" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+          <a class="icon" href="https://www.linkedin.com/in/olly-middleton-335362131/" target="_blank">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
   </body>
 </html>

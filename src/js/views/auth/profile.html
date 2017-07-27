@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<div class="column is-10 is-offset-1 ">
+<h2>USER PROFILE</h2>
+
+
+
+<button ng-click="usersShow.delete(user)" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id" class="button is-danger" >Delete</button>
+
+<ul>
+  <li ng-repeat="log in usersShow.user.logs">
+    <div ng-if="log.user.id === main.currentUser.id">
+      <h3>{{ log.dive_site.name }}</h3>
+      <h3>{{ log.comments }}</h3>
+      <h3>{{ log.gear}}</h3>
+      <br>
+    </div>
+  </li>
+</ul>
+</div>
