@@ -1,7 +1,6 @@
 angular
 .module('scubaApp')
 .controller('LogsNewCtrl', LogsNewCtrl)
-.controller('LogsShowCtrl', LogsShowCtrl)
 .controller('LogsEditCtrl', LogsEditCtrl);
 
 
@@ -21,19 +20,14 @@ function LogsNewCtrl(Log, $state, DiveSite) {
   vm.create = logCreate;
 }
 
-LogsShowCtrl.$inject = ['Log', 'User', '$stateParams', '$state', '$auth'];
-function LogsShowCtrl(Log, User, $stateParams, $state, $auth) {
+
+LogsEditCtrl.$inject = ['$state', 'Log', 'User', 'DiveSite', '$stateParams', '$auth'];
+
+function LogsEditCtrl($state, Log, User, DiveSite, $stateParams, $auth) {
   const vm = this;
-
-  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
-
-}
-
-LogsEditCtrl.$inject = ['$state', 'Log', 'DiveSite', '$stateParams'];
-
-function LogsEditCtrl($state, Log, DiveSite, $stateParams) {
-  const vm = this;
+  
   vm.diveSites = DiveSite.query();
+  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   Log.get($stateParams).$promise.then((log) => {
     vm.log = log;
@@ -45,7 +39,8 @@ function LogsEditCtrl($state, Log, DiveSite, $stateParams) {
     .update({ id: vm.log.id }, vm.log)
     .$promise
     .then(() => {
-      $state.go('usersShow', $state.params);
+      $state.go('usersShow', { id: vm.currentUser.id }
+    );
     });
   }
   vm.update = logUpdate;

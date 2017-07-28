@@ -1,137 +1,44 @@
 <!DOCTYPE html>
 
-<div class="column is-10 is-offset-1 ">
+<div class="columns is-multiline">
+  <div class="column is-10 is-offset-1 ">
 
-<h2>{{usersShow.currentUser.username}}'s Profile</h2>
-<h4>{{usersShow.currentUser.username}}</h4>
-<h3>{{usersShow.currentUser.full_name}}</h3>
-<h3>{{usersShow.currentUser.email}}</h3>
-<h3>{{usersShow.currentUser.diving_level}}</h3>
+    <h2>{{usersShow.currentUser.username}}'s Profile</h2>
 
-<button ng-click="usersShow.delete(user)" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id" class="button is-danger" >Delete</button>
-</div>
-<div ng-repeat="log in usersShow.user.logs">
-  <div class="card has-shadow" ng-if="log.user.id === main.currentUser.id">
-    {{log}}
-    <button ui-sref="logsEdit({ id: log.id })" class="button is-warning" ng-if="main.isAuthenticated() && (log.user.id === main.currentUser.id)">Edit</button>
+    <h4>Name: {{usersShow.currentUser.full_name}}</h4>
+    <h4>Email: {{usersShow.currentUser.email}}</h4>
+    <h4>Current Diving Qualification: {{usersShow.currentUser.diving_level}}</h4>
+    <h4>Number of Dives: <br> {{usersShow.currentUser.number_of_dives}} Dives</h4>
+    <h4>Total Dive Time: <br> {{usersShow.currentUser.total_dive_time}} Minutes</h4>
 
-    <button ng-click="usersShow.log.delete()" class="button is-danger" ng-if="main.isAuthenticated() && (log.user.id === main.currentUser.id)">Delete</button>
+    <button ng-click="usersShow.delete(user)" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id" class="button is-danger" >Delete</button>
+  </div>
+  <div class="column is-10 is-offset-1 ">
 
-    <h3 class="title"><a ui-sref="diveSitesShow({ id: log.dive_site.id })">{{ log.dive_site.name }}</a></h3>
-    <div class="content">
-    <h4>{{ log.gear}}</h4>
-    <h4>{{ log.comments }}</h4>
+    <div class="full-width" ng-repeat="log in usersShow.user.logs">
+      <div class="card has-shadow" ng-if="log.user.id === main.currentUser.id">
 
+        <button ui-sref="logsEdit({ id: log.id })" class="button is-warning" ng-if="main.isAuthenticated() && (log.user.id === main.currentUser.id)">Edit</button>
+
+        <button ng-click="usersShow.log.delete()" class="button is-danger" ng-if="main.isAuthenticated() && (log.user.id === main.currentUser.id)">Delete</button>
+
+        <h3 class="title"><a ui-sref="diveSitesShow({ id: log.dive_site.id })">{{ log.dive_site.name }}</a></h3>
+        <p>{{log.date | date: 'longDate'}} </p>
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="{{ log.image_src }}" alt="Image">
+          </figure>
+        </div>
+        <div class="content">
+          <h4>Location: {{ log.dive_site.country }}</h4>
+          <h4>Water temperature: {{ log.temperature }} °C</h4>
+          <h4>Visibility was {{ log.visibility }} meters</h4>
+          <h4>Dive Time was {{ log.dive_time }} minutes</h4>
+          <p><strong>Dive Comments:  </strong>{{ log.comments }}</p>
+          <h4>Dive Gear Used: {{ log.gear}}</h4>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<div class="columns is-multiline ">
-
-      <div class="column is-4">
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">
-              <img src="https://placehold.it/64x64" class="avatar">
-              &commat;username
-            </p>
-            <span class="card-header-icon timestamp">
-              2m
-            </span>
-          </header>
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://placehold.it/1280x960" alt="Image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="panel-block-item">
-              <span class="likes">
-                <span class="icon">
-                  <i class="fa fa-heart"></i>
-                </span>
-                303k Likes
-              </span>
-              <span class="comments">
-                <span class="icon">
-                  <i class="fa fa-comment"></i>
-                </span>
-                12k Comments
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="column is-4">
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">
-              <img src="https://placehold.it/64x64" class="avatar">
-              &commat;username
-            </p>
-            <span class="card-header-icon timestamp">
-              2m
-            </span>
-          </header>
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://placehold.it/1280x960" alt="Image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="panel-block-item">
-              <span class="likes">
-                <span class="icon">
-                  <i class="fa fa-heart"></i>
-                </span>
-                303k Likes
-              </span>
-              <span class="comments">
-                <span class="icon">
-                  <i class="fa fa-comment"></i>
-                </span>
-                12k Comments
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="column is-4">
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">
-              <img src="https://placehold.it/64x64" class="avatar">
-              &commat;username
-            </p>
-            <span class="card-header-icon timestamp">
-              2m
-            </span>
-          </header>
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://placehold.it/1280x960" alt="Image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="panel-block-item">
-              <span class="likes">
-                <span class="icon">
-                  <i class="fa fa-heart"></i>
-                </span>
-                303k Likes
-              </span>
-              <span class="comments">
-                <span class="icon">
-                  <i class="fa fa-comment"></i>
-                </span>
-                12k Comments
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="columns">
-    </div>

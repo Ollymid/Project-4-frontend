@@ -8,11 +8,11 @@
   <div class="content">
     <p><strong>Max Depth: </strong>{{ diveSitesShow.site.max_depth }} Meters </p>
     <p><strong>Nearest Country: </strong>{{ diveSitesShow.site.country }} </p>
-    <p>This is a <strong>{{ diveSitesShow.site.water_type }}</strong> water dive</p>
+    <p><strong>Water type: </strong> This is a <strong>{{ diveSitesShow.site.water_type }}</strong> water dive</p>
 
     <div class="card-image">
       <figure>
-        <img ng-src="{{ diveSitesShow.site.image_src }}">
+        <img class="site-image" ng-src="{{ diveSitesShow.site.image_src }}" style="height: 300px; width: 400px" alt="site-image">
       </figure>
     </div>
 
@@ -22,11 +22,14 @@
 
 
       <div ng-repeat="log in diveSitesShow.site.logs">
-        {{log}}
         <div class="card has-shadow">
+          <img class="log-image" ng-src="{{ log.image_src }}" style="height: 200px; width: 300px" alt="log-image">
           <h4 class="title">{{log.comments }}</h4>
           <p><strong>Date: </strong>{{log.date}}</p>
-          <p>{{log.dive_time}}</p>
+          <p><strong>Dive Time: </strong>{{log.dive_time}} minutes</p>
+          <p><strong>Water temperature: </strong>{{log.temperature}} °C</p>
+          <p><strong>Visibility: </strong>{{ log.visibility }} meters</p>
+          <p><strong>Dive Equipment Used: </strong>{{ log.gear }}</p>
 
 
         </div>

@@ -1,41 +1,66 @@
 <!DOCTYPE html>
-<div>
+<div class="column is-half is-offset-one-quarter">
   <div>
-    <form ng-submit="auth.register()">
-      <div>
-        <label>Username</label>
-        <input type="text" ng-model="auth.user.username">
+    <form ng-submit="register.submit()" name="register.registerform">
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Username" id="username" name="username" ng-model="register.user.username">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+          </span>
+        </p>
       </div>
-      <div>
-        <label>First name</label>
-        <input type="text" ng-model="auth.user.first_name">
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="First name" id="firstName" name="firstName" ng-model="register.user.first_name">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+          </span>
+        </p>
       </div>
-      <div>
-        <label>Last name</label>
-        <input type="text" ng-model="auth.user.last_name">
-      </div>
-
-      <div>
-        <label>Email</label>
-        <input type="text" ng-model="auth.user.email">
-      </div>
-
-      <div>
-        <label>Password</label>
-        <input type="password" ng-model="auth.user.password">
-      </div>
-
-      <div>
-        <label>Password Confirmation</label>
-        <input type="password" ng-model="auth.user.password_confirmation">
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Last name" id="lastName" name="lastName" ng-model="register.user.last_name">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
+          </span>
+        </p>
       </div>
 
-      <div>
-        <label>Diving Level</label>
-        <input type="text" ng-model="auth.user.diving_level">
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Email" id="email" name="email" ng-model="register.user.email">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-at" aria-hidden="true"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Password" id="password" name="password" ng-model="register.user.password">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Password Confirmation" id="PasswordConfirmation" name="passwordConfirmation" ng-model="register.user.password_confirmation">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-exclamation" aria-hidden="true"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Diving Level" id="divingLevel" name="divingLevel" ng-model="register.user.diving_level">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-line-chart" aria-hidden="true"></i>
+          </span>
+        </p>
       </div>
 
-      <button>Register</button>
+      <button class="button is-info is-fullwidth">Register</button>
     </form>
   </div>
 </div>

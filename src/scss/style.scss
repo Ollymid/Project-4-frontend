@@ -16,11 +16,15 @@ html, body, main {
 }
 
 h2 {
+  font-size: 22px !important;
   width: 500px;
   display: block;
   margin: 0 auto !important;
   text-align: center;
+  margin-bottom: 10px !important;
 }
+
+
 
 body {
   background-color: white;
@@ -79,28 +83,26 @@ body {
       left: 0 ; right: 0; bottom: 0;
     }
   }
+}
 
+a.ng-binding {
+  color: $color3 !important;
 }
 
 .card  {
   background-color: $color1 !important;
   padding: 10px;
   margin: 10px;
-  img {
-    background-size: cover;
+  position: relative;
+
+}
+
+img {
+  &.site-image {
+    display: block;
+    margin: 0 auto;
   }
 }
-
-.card-image {
-  margin: 20px 0;
-}
-
-.image {
-  height: 300px;
-  width: 400px;
-  margin: 0 auto;
-}
-
 
 .navbar-logo {
   height: 40px;
@@ -150,5 +152,10 @@ nav {
 }
 
 .is-4by3 {
-  width: 300px;
+  width: 250px;
+  padding-top: 25% !important;
+}
+
+button.facebook {
+  margin-top: 25px;
 }
