@@ -1,20 +1,5 @@
 <!DOCTYPE html>
 
-
-
-<div class="">
-
-
-
-
-
-
-
-
-</div>
-
-<!DOCTYPE html>
-
 <div class="column is-10 is-offset-1">
 
   <google-map-show center="{ lat: 51.533309, lng: -0.105317 }"> </google-map-show>
@@ -22,27 +7,31 @@
   <h2 class="title showtitle">{{ diveSitesShow.site.name }}</h2>
   <div class="content">
     <p><strong>Max Depth: </strong>{{ diveSitesShow.site.max_depth }} Meters </p>
+    <p><strong>Nearest Country: </strong>{{ diveSitesShow.site.country }} </p>
+    <p>This is a <strong>{{ diveSitesShow.site.water_type }}</strong> water dive</p>
+
     <div class="card-image">
-      <figure class="image is-128x128">
+      <figure>
         <img ng-src="{{ diveSitesShow.site.image_src }}">
       </figure>
     </div>
-    
 
-    <hr>
     <button ui-sref="diveSitesEdit({ id: diveSitesShow.site.id })" class="button is-warning" ng-if="main.isAuthenticated() && (diveSitesShow.site.creator.id === main.currentUser.id)">Edit</button>
 
     <button ng-click="diveSitesShow.delete()" class="button is-danger" ng-if="main.isAuthenticated() && (diveSitesShow.site.creator.id === main.currentUser.id)">Delete</button>
-  </div>
-  <hr>
-</div>
-<div class="column is-10 is-offset-1 ">
-  <div ng-repeat="log in diveSitesShow.site.logs">
-    <div class="card has-shadow">
-      <h2 class="title"><a ui-sref="logsShow({ id: log.id })">{{log.comments }}</a></h2>
-      <p>hello</p>
 
 
+      <div ng-repeat="log in diveSitesShow.site.logs">
+        {{log}}
+        <div class="card has-shadow">
+          <h4 class="title">{{log.comments }}</h4>
+          <p><strong>Date: </strong>{{log.date}}</p>
+          <p>{{log.dive_time}}</p>
+
+
+        </div>
+      </div>
     </div>
-  </div>
+
+
 </div>

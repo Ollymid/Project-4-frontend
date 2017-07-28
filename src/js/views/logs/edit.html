@@ -2,8 +2,8 @@
 <div class="column is-8 is-offset-2">
   <div class="field">
     <h2 class="title">Log your dive! </h2>
-    <form name="logsEdit.editForm" ng-submit="logsEdit.create()">
-      {{ logsEdit.log}}
+    <form name="logsEdit.editForm" ng-submit="logsEdit.update()">
+      {{ logsEdit.log.dive_site}}
 
       <div class="field">
         <label for="date">Date of dive:</label>
@@ -22,7 +22,7 @@
         <label for="date">What dive site did you dive?</label>
         <p class="control has-icons-left">
           <span class="select is-fullwidth">
-            <select name="diveSite" id="diveSite" ng-model="logsEdit.log.dive_site_id" value="diveSite.id" required>
+            <select name="diveSite" id="diveSite" ng-model="logsEdit.log.dive_site_id" value="logsEdit.log.dive_site.id" required>
               <option ng-repeat="diveSite in logsEdit.diveSites" value="{{diveSite.id}}"> {{diveSite.name}} </option>
             </select>
           </span>
@@ -113,7 +113,7 @@
 
       <div class="field newBottom">
         <p class="control">
-          <button class="button is-info is-fullwidth">Create</button>
+          <button class="button is-info is-fullwidth">Edit</button>
         </p>
       </div>
 

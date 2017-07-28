@@ -27,22 +27,13 @@ function LogsShowCtrl(Log, User, $stateParams, $state, $auth) {
 
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-  vm.log = Log.get($stateParams);
-
-  function logDelete() {
-    vm.log
-      .$remove()
-      .then(() => $state.go('logsIndex'));
-  }
-
-  vm.delete = logDelete;
-
 }
 
-LogsEditCtrl.$inject = ['$state', 'Log', '$stateParams'];
+LogsEditCtrl.$inject = ['$state', 'Log', 'DiveSite', '$stateParams'];
 
-function LogsEditCtrl($state, Log, $stateParams) {
+function LogsEditCtrl($state, Log, DiveSite, $stateParams) {
   const vm = this;
+  vm.diveSites = DiveSite.query();
 
   Log.get($stateParams).$promise.then((log) => {
     vm.log = log;
@@ -54,7 +45,7 @@ function LogsEditCtrl($state, Log, $stateParams) {
     .update({ id: vm.log.id }, vm.log)
     .$promise
     .then(() => {
-      $state.go('logsShow', $state.params);
+      $state.go('usersShow', $state.params);
     });
   }
   vm.update = logUpdate;

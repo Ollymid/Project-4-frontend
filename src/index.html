@@ -7,6 +7,7 @@
     <title>Bubbles</title>
     <script src="https://use.fontawesome.com/3818a32d0a.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKBfbXmibiy_CzLqXuWzS0xcZ_ZVZyIjM&libraries=places"></script>
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Lobster" rel="stylesheet">
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
@@ -17,7 +18,7 @@
   <body ng-controller="MainCtrl as main" ng-class="main.pageName">
     <nav class="nav">
       <div class="nav-left">
-        <a class="nav-item" ui-sref="home">
+        <a class="nav-item logo" ui-sref="home">
           <img class="navbar-logo" src="../images/anchor.png" alt="Anchor Logo">
         </a>
       </div>
@@ -28,10 +29,11 @@
       </span>
       <div class="nav-right nav-menu" ng-class="{ 'is-active': menuIsOpen }">
         <a class="nav-item" ui-sref="diveSitesIndex" ui-sref-active="active" ng-if="main.isAuthenticated()">Dive Sites Near You</a>
+        <a class="nav-item" ui-sref="diveSitesNew" ui-sref-active="active" ng-if="main.isAuthenticated()">Create a New Site</a>
         <a class="nav-item" ui-sref="logsNew" ui-sref-active="active" ng-if="main.isAuthenticated()">Create a New Log</a>
         <a class="nav-item" ui-sref="login" ui-sref-active="active" ng-if="!main.isAuthenticated()">Login</a>
         <a class="nav-item" ui-sref="register" ui-sref-active="active" ng-if="!main.isAuthenticated()">Register</a>
-        <a class="nav-item" ui-sref="usersShow({id: main.currentUser.id})" ui-sref-active="active" ng-if="main.isAuthenticated()">Profile</a>
+        <a class="nav-item" ui-sref="usersShow({id: main.currentUser.id})" ui-sref-active="active" ng-if="main.isAuthenticated()">Your Logbook</a>
 
         <a class="nav-item" ng-click="main.logout()" ui-sref-active="active" ng-if="main.isAuthenticated()">Logout</a>
       </div>

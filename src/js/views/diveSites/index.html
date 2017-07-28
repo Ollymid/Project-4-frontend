@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 
 <div class="column is-10 is-offset-1 ">
-
+  <h2>Click on a dive site marker to see the logs </h2>
   <google-map-index center="{ lat: 51.533309, lng: -0.105317 }" sites="diveSitesIndex.all">
     MAP GOES HERE
   </google-map-index>
 
-  <div ng-repeat="diveSite in diveSitesIndex.all">
-    <div class="card has-shadow">
-      <h2 class="title"><a ui-sref="diveSitesShow({ id: diveSite.id })">{{ diveSite.name }}</a></h2>
 
-      <div class="content">
-
-        <p> Max Depth: {{diveSite.max_depth}}</p>
-
-      </div>
-    </div>
-  </div>
 </div>

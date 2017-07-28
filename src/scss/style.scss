@@ -7,24 +7,43 @@ $color4: #7fcdff;
 $color5: #def3f6;
 $color6: #363942;
 $color7: #FAFBF9;
+$fontStack: 'Archivo Black', sans-serif;
 
-html, body {
+html, body, main {
+  margin: 0;
   height: 100%;
+  min-height: 100%;
+}
+
+h2 {
+  width: 500px;
+  display: block;
+  margin: 0 auto !important;
+  text-align: center;
 }
 
 body {
-  font-weight: 300;
-  background-color: $color5;
-  height: 100%;
+  background-color: white;
   position: relative;
-  padding-bottom: 500px;
+  font-family: $fontStack !important;
+
+
   &.home {
     height: 100vh;
     background-image: url('../images/sea.jpg');
     background-size: 100%;
     background-position: 40% 50%;
-
     background-repeat: no-repeat;
+    position: relative;
+    h1 {
+      font-size: 36px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      margin-top: 250px;
+    }
     footer {
       display: none;
     }
@@ -60,15 +79,11 @@ body {
       left: 0 ; right: 0; bottom: 0;
     }
   }
-  footer {
-    position: absolute;
-    background-color: $color3;
-    left: 0 ; right: 0; bottom: 0;
-  }
+
 }
 
 .card  {
-  background-color: $color2 !important;
+  background-color: $color1 !important;
   padding: 10px;
   margin: 10px;
   img {
@@ -90,6 +105,41 @@ body {
 .navbar-logo {
   height: 40px;
   width: 40px;
+  &:hover {
+    background-color: $color5 !important;
+    color: $color3 !important;
+}
+}
+
+nav {
+  font-family: 'Lobster', cursive;
+  padding: 0;
+  height: 80px !important;
+  background-color: $color5 !important;
+  img {
+    margin-top: 5px;
+    height: 50px
+  }
+  a{
+    color: $color3 !important;
+    font-size: 18px;
+    &:hover {
+      background-color: $color3 !important;
+      color: white !important;
+    }
+    &.logo:hover {
+        background-color: $color5 !important;
+        color: $color3 !important;
+    }
+  }
+  .active {
+    font-weight: bold;
+    font-size: 22px;
+  }
+  &a:hover {
+    background-color: $color3 !important;
+    color: white !important;
+}
 }
 
 .map {
@@ -97,4 +147,8 @@ body {
   height: 500px;
   margin: 20px auto;
   padding: 20px;
+}
+
+.is-4by3 {
+  width: 300px;
 }

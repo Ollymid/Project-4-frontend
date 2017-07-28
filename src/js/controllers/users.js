@@ -4,15 +4,16 @@ angular
 
 
 
-UsersShowCtrl.$inject = ['$auth', 'User', '$state', '$stateParams'];
+UsersShowCtrl.$inject = ['$auth', 'User', 'Log', '$state', '$stateParams', 'DiveSite'];
 
-function UsersShowCtrl($auth, User, $state, $stateParams) {
+function UsersShowCtrl($auth, User, Log, $state, $stateParams, DiveSite) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({
     id: $auth.getPayload().id
   });
 
   vm.user = User.get($stateParams);
+  vm.site = DiveSite.query();
 
   function profileDelete() {
     User
@@ -25,4 +26,15 @@ function UsersShowCtrl($auth, User, $state, $stateParams) {
   }
 
   vm.delete = profileDelete;
+
+
+  vm.log = Log.get($stateParams);
+
+  function logDelete() {
+    vm.log
+      .$remove()
+      .then(() => $state.go('usersShow'));
+  }
+
+  vm.log.delete = logDelete;
 }
