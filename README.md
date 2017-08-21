@@ -19,7 +19,8 @@
 
 - [GitHub APP link](https://github.com/Ollymid/Project-4-frontend)
 - [GitHub API link](https://github.com/Ollymid/Project_4_api)
-The Bubbles Logbook is available to view and register [Heroku Link](https://bubbles-log.herokuapp.com/)
+
+The Bubbles Logbook is available to view and register using this [Heroku Link](https://bubbles-log.herokuapp.com/)
 
 ## Project Description
 
