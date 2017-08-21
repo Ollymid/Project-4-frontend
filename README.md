@@ -15,10 +15,10 @@
 ### Setting up API locally
 - Run `rails s` to run the rails app locally
 
+### Relevant Links
+
 - [GitHub APP link](https://github.com/Ollymid/Project-4-frontend)
 - [GitHub API link](https://github.com/Ollymid/Project_4_api)
-
-
 The Bubbles Logbook is available to view and register [Heroku Link](https://bubbles-log.herokuapp.com/)
 
 ## Project Description
