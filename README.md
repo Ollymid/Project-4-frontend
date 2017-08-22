@@ -85,7 +85,7 @@ This meant that when it came to editing rights of the dive sites, anybody could 
 
 I fixed this by migrating in a creator attribute to the dive site model - this recorded the id of the user who create the dive site, which meant I could then add code that made the edit button only viewable by the creator.
 
-Again, styling I found difficult, but I have gotten better at it since my last solo project so I happy in that respect. 
+Again,I found styling difficult, but I have gotten better at it since my last solo project so I am happy in that respect. 
 
 
 ## Making it better
